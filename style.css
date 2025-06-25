@@ -17,8 +17,19 @@ body {
    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
    color: white;
    text-align: center;
-   padding: 1.5rem 1rem;
+   padding: 2rem 1rem;
    box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
+   position: relative;
+}
+
+.header::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
 }
 
 .header h1 {
@@ -26,6 +37,8 @@ body {
    margin-bottom: 0.5rem;
    font-weight: 600;
    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+   position: relative;
+   z-index: 1;
 }
 
 .institute-info {
@@ -33,6 +46,8 @@ body {
    opacity: 0.95;
    margin-bottom: 0.8rem;
    font-weight: 500;
+   position: relative;
+   z-index: 1;
 }
 
 .certifications {
@@ -42,11 +57,13 @@ body {
    padding: 0.8rem;
    border-radius: 8px;
    backdrop-filter: blur(10px);
+   position: relative;
+   z-index: 1;
 }
 
 .container {
    max-width: 900px;
-   margin: 2rem auto;
+   margin: 3rem auto;
    padding: 0 1rem;
 }
 
@@ -76,16 +93,36 @@ body {
    color: white;
    padding: 1.5rem;
    text-align: center;
+   position: relative;
+   overflow: hidden;
+}
+
+.card-header::before {
+   content: '';
+   position: absolute;
+   top: -50%;
+   left: -50%;
+   width: 200%;
+   height: 200%;
+   background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+   animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
 }
 
 .verification-status {
    font-size: 1.4rem;
    font-weight: bold;
+   position: relative;
+   z-index: 1;
    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .card-body {
-   padding: 2rem;
+   padding: 2.5rem;
    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
 }
 
@@ -103,11 +140,29 @@ body {
    border-left: 5px solid #1976d2;
    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
    transition: all 0.3s ease;
+   position: relative;
+   overflow: hidden;
+}
+
+.info-group::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 3px;
+   background: linear-gradient(to bottom, #ff9800, #1976d2);
+   transition: width 0.3s ease;
 }
 
 .info-group:hover {
    transform: translateY(-3px);
    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.info-group:hover::before {
+   width: 100%;
+   opacity: 0.05;
 }
 
 .info-label {
@@ -151,12 +206,10 @@ body {
    border-radius: 12px;
    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
    margin-bottom: 2rem;
-   -webkit-overflow-scrolling: touch;
 }
 
 .marks-table {
    width: 100%;
-   min-width: 600px;
    border-collapse: collapse;
    background: white;
    font-size: 0.95rem;
@@ -171,7 +224,17 @@ body {
    text-transform: uppercase;
    letter-spacing: 0.5px;
    border: none;
-   white-space: nowrap;
+   position: relative;
+}
+
+.marks-table th::after {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 2px;
+   background: #ff9800;
 }
 
 .marks-table td {
@@ -179,15 +242,24 @@ body {
    text-align: center;
    border-bottom: 1px solid #e0e0e0;
    transition: all 0.3s ease;
-   white-space: nowrap;
+   position: relative;
+}
+
+.marks-table tbody tr {
+   transition: all 0.3s ease;
 }
 
 .marks-table tbody tr:hover {
    background: linear-gradient(135deg, #e3f2fd 0%, #fff3e0 100%);
+   transform: scale(1.01);
 }
 
 .marks-table tbody tr:nth-child(even) {
    background: #fafafa;
+}
+
+.marks-table tbody tr:nth-child(even):hover {
+   background: linear-gradient(135deg, #e3f2fd 0%, #fff3e0 100%);
 }
 
 .total-row {
@@ -210,17 +282,40 @@ body {
    border-radius: 12px;
    margin-top: 2rem;
    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+   position: relative;
+   overflow: hidden;
+}
+
+.final-score::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: -100%;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+   animation: slideLeft 2s infinite;
+}
+
+@keyframes slideLeft {
+   0% { left: -100%; }
+   50% { left: 100%; }
+   100% { left: 100%; }
 }
 
 .final-score h3 {
    font-size: 1.8rem;
    margin-bottom: 0.5rem;
    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+   position: relative;
+   z-index: 1;
 }
 
 .final-score p {
    font-size: 1.2rem;
    opacity: 0.95;
+   position: relative;
+   z-index: 1;
 }
 
 .not-found {
@@ -273,37 +368,31 @@ body {
 
 .footer {
    text-align: center;
-   padding: 2rem 1rem;
+   padding: 3rem 1rem;
    color: #666;
    font-size: 0.9rem;
    background: white;
    border-top: 1px solid #e0e0e0;
-   margin-top: 2rem;
+   margin-top: 3rem;
 }
 
 .footer p {
    margin-bottom: 0.5rem;
 }
 
-/* ==================== MOBILE RESPONSIVE ==================== */
-
-/* Tablet */
+/* Responsive Design */
 @media (max-width: 768px) {
    .header h1 {
-       font-size: 1.8rem;
-   }
-   
-   .header {
-       padding: 1.5rem 0.5rem;
+       font-size: 1.6rem;
    }
 
    .container {
-       margin: 1.5rem auto;
+       margin: 2rem auto;
        padding: 0 0.5rem;
    }
 
    .card-body {
-       padding: 1.5rem 1rem;
+       padding: 1.5rem;
    }
 
    .student-info {
@@ -311,245 +400,53 @@ body {
        gap: 1rem;
    }
 
-   .info-group {
-       padding: 1rem;
-   }
-
-   .marks-section h3 {
-       font-size: 1.3rem;
-   }
-
    .marks-table {
-       font-size: 0.85rem;
-       min-width: 500px;
+       font-size: 0.8rem;
    }
 
    .marks-table th,
    .marks-table td {
-       padding: 0.8rem 0.5rem;
+       padding: 0.6rem 0.4rem;
    }
 
-   .final-score {
-       padding: 1.5rem;
-   }
-
-   .final-score h3 {
-       font-size: 1.5rem;
-   }
-
-   .final-score p {
-       font-size: 1.1rem;
-   }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-   .header {
-       padding: 1rem 0.5rem;
-   }
-
-   .header h1 {
-       font-size: 1.4rem;
-       margin-bottom: 0.3rem;
-   }
-
-   .institute-info {
-       font-size: 0.9rem;
-       margin-bottom: 0.5rem;
-   }
-
-   .certifications {
-       font-size: 0.75rem;
-       padding: 0.5rem;
-       line-height: 1.4;
-   }
-
-   .container {
-       margin: 1rem auto;
-       padding: 0 0.3rem;
-   }
-
-   .card {
-       border-radius: 10px;
+   .search-form input {
+       width: 200px;
        margin-bottom: 1rem;
-   }
-
-   .card-header {
-       padding: 1rem 0.5rem;
-   }
-
-   .verification-status {
-       font-size: 1.1rem;
-   }
-
-   .card-body {
-       padding: 1rem 0.8rem;
-   }
-
-   .student-info {
-       gap: 0.8rem;
-       margin-bottom: 1.5rem;
-   }
-
-   .info-group {
-       padding: 0.8rem;
-       border-left-width: 3px;
-   }
-
-   .info-label {
-       font-size: 0.8rem;
-       margin-bottom: 0.5rem;
-   }
-
-   .info-value {
-       font-size: 1rem;
-   }
-
-   .marks-section h3 {
-       font-size: 1.1rem;
-       margin-bottom: 1rem;
-   }
-
-   .marks-section h3::after {
-       width: 40px;
-       height: 2px;
-   }
-
-   .table-container {
-       margin: 0 -0.8rem 1.5rem -0.8rem;
-       border-radius: 0;
-       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-   }
-
-   .marks-table {
-       font-size: 0.75rem;
-       min-width: 480px;
-   }
-
-   .marks-table th {
-       padding: 0.6rem 0.3rem;
-       font-size: 0.7rem;
-   }
-
-   .marks-table td {
-       padding: 0.6rem 0.3rem;
-   }
-
-   .total-row {
-       font-size: 0.8rem;
-   }
-
-   .final-score {
-       padding: 1rem;
-       margin-top: 1.5rem;
-   }
-
-   .final-score h3 {
-       font-size: 1.2rem;
-       margin-bottom: 0.3rem;
-   }
-
-   .final-score p {
-       font-size: 1rem;
+       margin-right: 0;
    }
 
    .search-form {
-       margin-top: 1.5rem;
        display: flex;
        flex-direction: column;
        align-items: center;
        gap: 1rem;
    }
 
-   .search-form input {
-       width: 100%;
-       max-width: 250px;
-       margin-right: 0;
-       font-size: 0.9rem;
-       padding: 0.8rem 1rem;
-   }
-
-   .search-form button {
-       width: 100%;
-       max-width: 200px;
-       padding: 0.8rem 1.5rem;
-       font-size: 0.9rem;
-   }
-
-   .footer {
-       padding: 1.5rem 0.5rem;
-       font-size: 0.8rem;
-       margin-top: 1rem;
-   }
-
-   .not-found {
-       padding: 2rem 1rem;
-   }
-}
-
-/* Very Small Mobile */
-@media (max-width: 360px) {
-   .header h1 {
-       font-size: 1.2rem;
-   }
-
-   .certifications {
-       font-size: 0.7rem;
-   }
-
-   .verification-status {
-       font-size: 1rem;
-   }
-
-   .marks-table {
-       min-width: 340px;
-       font-size: 0.7rem;
-   }
-
-   .marks-table th,
-   .marks-table td {
-       padding: 0.5rem 0.2rem;
-   }
-
-   .marks-table th {
-       font-size: 0.65rem;
-   }
-
    .final-score h3 {
-       font-size: 1.1rem;
-   }
-
-   .final-score p {
-       font-size: 0.9rem;
+       font-size: 1.4rem;
    }
 }
 
-/* Landscape Mobile */
-@media (max-width: 768px) and (orientation: landscape) {
+@media (max-width: 480px) {
    .header {
-       padding: 0.8rem 0.5rem;
-   }
-
-   .header h1 {
-       font-size: 1.3rem;
-   }
-
-   .certifications {
-       font-size: 0.7rem;
-       padding: 0.5rem;
-   }
-
-   .container {
-       margin: 1rem auto;
+       padding: 1.5rem 0.5rem;
    }
 
    .card-body {
        padding: 1rem;
    }
 
-   .student-info {
-       grid-template-columns: repeat(2, 1fr);
-       gap: 0.8rem;
+   .info-group {
+       padding: 1rem;
+   }
+
+   .table-container {
+       margin: 0 -1rem;
+       border-radius: 0;
+   }
+
+   .marks-table {
+       font-size: 0.75rem;
    }
 }
 </style>
